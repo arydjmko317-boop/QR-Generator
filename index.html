@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Pro - Modern & Powerful QR Generator</title>
+    <meta name="description" content="Hasilkan kode QR berkualitas tinggi dengan kustomisasi warna, logo, dan gaya secara instan.">
+    <meta name="keywords" content="qr generator, buat qr code, qr modern, qr kustom">
+    
+    <!-- Social Meta Tags -->
+    <meta property="og:title" content="QR Pro - Modern QR Generator">
+    <meta property="og:description" content="Generate QR codes with style and precision.">
+    <meta name="twitter:title" content="QR Pro - Modern QR Generator">
+    <meta name="twitter:description" content="Generate QR codes with style and precision.">
+
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react@18/umd/react.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://resource.trickle.so/vendor_lib/unpkg/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://resource.trickle.so/vendor_lib/unpkg/lucide-static@0.516.0/font/lucide.css" rel="stylesheet">
+    
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+
+    <style type="text/tailwindcss">
+    @layer theme {
+        :root {
+            --primary: #111827;
+            --primary-dark: #000000;
+            --secondary: #6b7280;
+            --background: #ffffff;
+            --surface: #ffffff;
+            --accent: #f3f4f6;
+            --radius: 0px; /* Minimalist sharp edges like the target site */
+        }
+    }
+
+    @layer base {
+        body {
+            @apply bg-[var(--background)] text-gray-900 font-sans antialiased selection:bg-gray-200;
+        }
+        h1, h2, h3, h4 {
+            @apply font-bold tracking-tight uppercase;
+        }
+    }
+
+    @layer components {
+        .btn {
+            @apply px-6 py-3 border border-black font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2;
+        }
+        .btn-primary {
+            @apply bg-black text-white hover:bg-white hover:text-black active:scale-95;
+        }
+        .btn-secondary {
+            @apply bg-transparent text-black hover:bg-black hover:text-white active:scale-95;
+        }
+        .card {
+            @apply bg-[var(--surface)] border border-gray-200 shadow-none transition-all duration-300;
+        }
+        .input-field {
+            @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:outline-none focus:border-black transition-all duration-200 text-sm;
+        }
+        .tab-btn {
+            @apply px-6 py-4 font-bold text-[10px] uppercase tracking-widest border-b-2 transition-all duration-300;
+        }
+        .section-label {
+            @apply text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mb-2 block;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" src="components/Header.js"></script>
+    <script type="text/babel" src="components/QRDisplay.js"></script>
+    <script type="text/babel" src="components/ControlPanel.js"></script>
+    <script type="text/babel" src="utils/qrHelper.js"></script>
+    <script type="text/babel" src="app.js"></script>
+</body>
+</html>
