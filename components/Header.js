@@ -7,8 +7,8 @@ function Header() {
             <div className="icon-qr-code text-2xl"></div>
           </div>
           <div className="border-l border-slate-200 pl-4 leading-none">
-            <h1 className="text-sm font-black uppercase tracking-[0.2em] text-black">QR PRO</h1>
-            <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.2em] text-slate-500">Digital Utility</span>
+            <h1 className="text-sm font-black uppercase tracking-[0.2em] text-black">QR GENERATOR PRO</h1>
+            <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.2em] text-slate-500">Aryo Djatmiko Singgih Pratama</span>
           </div>
         </div>
 

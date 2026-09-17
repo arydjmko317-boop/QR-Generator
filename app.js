@@ -67,7 +67,7 @@ function App() {
             <div className="mb-8 text-center lg:text-left">
               <p className="mb-3 text-[10px] font-black uppercase tracking-[0.32em] text-[var(--primary)]">Official QR Code Generator</p>
               <h1 className="text-3xl font-black uppercase tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-                QR Generator Bebas Iklan
+                QR GENERATOR GRATIS & PRAKTIS
               </h1>
             </div>
 
