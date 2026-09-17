@@ -45,7 +45,8 @@ function App() {
     margin: 2,
     size: 512,
     errorLevel: 'H',
-    type: 'URL'
+    type: 'URL',
+    logoImage: ''
   });
 
   const updateConfig = (newVal) => {

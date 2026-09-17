@@ -6,6 +6,59 @@ function QRDisplay({ config }) {
     generateQR();
   }, [config]);
 
+  const drawLogoOnCanvas = (canvas, logoImage) => {
+    if (!logoImage || !canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    const size = canvas.width;
+    const logoSize = Math.max(Math.min(size * 0.22, 110), 48);
+    const x = (size - logoSize) / 2;
+    const y = (size - logoSize) / 2;
+
+    ctx.save();
+    ctx.fillStyle = '#ffffff';
+    ctx.strokeStyle = '#e5e7eb';
+    ctx.lineWidth = 2;
+
+    const radius = 18;
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + logoSize - radius, y);
+    ctx.quadraticCurveTo(x + logoSize, y, x + logoSize, y + radius);
+    ctx.lineTo(x + logoSize, y + logoSize - radius);
+    ctx.quadraticCurveTo(x + logoSize, y + logoSize, x + logoSize - radius, y + logoSize);
+    ctx.lineTo(x + radius, y + logoSize);
+    ctx.quadraticCurveTo(x, y + logoSize, x, y + logoSize - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    const img = new Image();
+    img.onload = () => {
+      const logoPadding = 10;
+      const drawSize = logoSize - logoPadding * 2;
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y + logoPadding);
+      ctx.lineTo(x + logoSize - radius, y + logoPadding);
+      ctx.quadraticCurveTo(x + logoSize - logoPadding, y + logoPadding, x + logoSize - logoPadding, y + radius + logoPadding);
+      ctx.lineTo(x + logoSize - logoPadding, y + logoSize - radius - logoPadding);
+      ctx.quadraticCurveTo(x + logoSize - logoPadding, y + logoSize - logoPadding, x + logoSize - radius - logoPadding, y + logoSize - logoPadding);
+      ctx.lineTo(x + radius + logoPadding, y + logoSize - logoPadding);
+      ctx.quadraticCurveTo(x + logoPadding, y + logoSize - logoPadding, x + logoPadding, y + logoSize - radius - logoPadding);
+      ctx.lineTo(x + logoPadding, y + radius + logoPadding);
+      ctx.quadraticCurveTo(x + logoPadding, y + logoPadding, x + radius + logoPadding, y + logoPadding);
+      ctx.closePath();
+      ctx.clip();
+      ctx.drawImage(img, x + logoPadding, y + logoPadding, drawSize, drawSize);
+      ctx.restore();
+    };
+    img.src = logoImage;
+    ctx.restore();
+  };
+
   const generateQR = async () => {
     if (!canvasRef.current) return;
     setIsGenerating(true);
@@ -19,6 +72,8 @@ function QRDisplay({ config }) {
         },
         errorCorrectionLevel: config.errorLevel,
       });
+
+      drawLogoOnCanvas(canvasRef.current, config.logoImage);
     } catch (err) {
       console.error('QR Generation failed:', err);
     } finally {

@@ -14,6 +14,17 @@ function ControlPanel({ config, onUpdate }) {
     onUpdate({ [name]: value });
   };
 
+  const handleLogoUpload = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      onUpdate({ logoImage: event.target.result || '' });
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <div className="card flex flex-col overflow-hidden" data-name="control-panel" data-file="components/ControlPanel.js">
       <div className="flex border-b border-[var(--line)] bg-white/70 backdrop-blur-sm">
@@ -184,9 +195,16 @@ function ControlPanel({ config, onUpdate }) {
 
             <div className="rounded-2xl border border-[var(--line)] bg-white p-4">
               <p className="text-sm font-bold text-slate-700">Upload Logo</p>
-              <button className="mt-3 w-full rounded-xl border border-dashed border-[var(--primary)] bg-[var(--accent)] px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--primary)]">
+              <label className="mt-3 block w-full cursor-pointer rounded-xl border border-dashed border-[var(--primary)] bg-[var(--accent)] px-4 py-3 text-center text-[10px] font-black uppercase tracking-[0.2em] text-[var(--primary)]">
                 Upload Logo
-              </button>
+                <input type="file" accept="image/*" onChange={handleLogoUpload} className="hidden" />
+              </label>
+              {config.logoImage && (
+                <div className="mt-3 flex items-center gap-3 rounded-xl border border-[var(--line)] bg-slate-50 p-2">
+                  <img src={config.logoImage} alt="Logo preview" className="h-10 w-10 rounded-md object-cover" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-600">Logo terpasang</span>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -194,7 +212,7 @@ function ControlPanel({ config, onUpdate }) {
 
       <div className="flex items-center justify-end gap-3 border-t border-[var(--line)] bg-[var(--panel)] p-4">
         <button
-          onClick={() => onUpdate({ colorDark: '#1d5c3c', colorLight: '#ffffff', margin: 2, errorLevel: 'H' })}
+          onClick={() => onUpdate({ colorDark: '#1d5c3c', colorLight: '#ffffff', margin: 2, errorLevel: 'H', logoImage: '' })}
           className="btn btn-secondary"
         >
           <div className="icon-rotate-ccw text-base"></div>
