@@ -12,13 +12,8 @@ function Header() {
           </div>
         </div>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          <a href="#" className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 transition-colors hover:text-[var(--primary)]">01 // Generator</a>
-          <a href="#" className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 transition-colors hover:text-[var(--primary)]">02 // Histori</a>
-          <a href="#" className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 transition-colors hover:text-[var(--primary)]">03 // API</a>
-        </nav>
+        <div className="hidden md:flex" />
 
-        <div className="flex items-center gap-3" />
       </div>
     </header>
   );
