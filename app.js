@@ -82,11 +82,6 @@ function App() {
           <div className="container mx-auto px-4 py-8 text-center text-sm text-slate-500">
             <p>© 2026 QR Pro Generator. All rights reserved.</p>
             <p className="mt-2">CREATED BY ARYO DJATMIKO SINGGIH PRATAMA 2026</p>
-            <div className="mt-2 flex justify-center gap-4">
-              <a href="#" className="hover:text-[var(--primary)]">Privacy</a>
-              <a href="#" className="hover:text-[var(--primary)]">Terms</a>
-              <a href="https://x.com/Trickle_HQ" target="_blank" rel="noreferrer" className="hover:text-[var(--primary)]">Twitter</a>
-            </div>
           </div>
         </footer>
       </div>
