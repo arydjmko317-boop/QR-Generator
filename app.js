@@ -39,10 +39,10 @@ class ErrorBoundary extends React.Component {
 
 function App() {
   const [config, setConfig] = React.useState({
-    value: 'https://trickle.so',
-    colorDark: '#000000',
+    value: 'https://ponpeskarangasem.com',
+    colorDark: '#1d5c3c',
     colorLight: '#ffffff',
-    margin: 4,
+    margin: 2,
     size: 512,
     errorLevel: 'H',
     type: 'URL'
@@ -54,33 +54,38 @@ function App() {
 
   try {
     return (
-      <div className="min-h-screen flex flex-col" data-name="app" data-file="app.js">
+      <div className="min-h-screen flex flex-col bg-[var(--page-bg)] text-slate-800" data-name="app" data-file="app.js">
         <Header />
-        
-        <main className="flex-grow container mx-auto px-4 py-8 max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Control Panel - Left Side */}
-            <div className="lg:col-span-7 order-2 lg:order-1">
-              <ControlPanel config={config} onUpdate={updateConfig} />
+
+        <main className="flex-grow">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
+            <div className="mb-8 text-center lg:text-left">
+              <p className="mb-3 text-[10px] font-black uppercase tracking-[0.32em] text-[var(--primary)]">Official QR Code Generator</p>
+              <h1 className="text-3xl font-black uppercase tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                QR Generator Bebas Iklan
+              </h1>
             </div>
 
-            {/* QR Preview - Right Side */}
-            <div className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-8">
-              <QRDisplay config={config} />
-            </div>
+            <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
+              <div className="order-2 lg:order-1 lg:col-span-7">
+                <ControlPanel config={config} onUpdate={updateConfig} />
+              </div>
 
+              <div className="order-1 lg:order-2 lg:col-span-5 lg:sticky lg:top-8">
+                <QRDisplay config={config} />
+              </div>
+            </div>
           </div>
         </main>
 
-        <footer className="py-8 border-t border-slate-200 bg-white">
-          <div className="container mx-auto px-4 text-center text-slate-500 text-sm">
+        <footer className="border-t border-slate-200 bg-white">
+          <div className="container mx-auto px-4 py-8 text-center text-sm text-slate-500">
             <p>© 2026 QR Pro Generator. All rights reserved.</p>
             <p className="mt-2">CREATED BY ARYO DJATMIKO SINGGIH PRATAMA 2026</p>
-            <div className="flex justify-center gap-4 mt-2">
-              <a href="#" className="hover:text-indigo-600">Privacy</a>
-              <a href="#" className="hover:text-indigo-600">Terms</a>
-              <a href="https://x.com/Trickle_HQ" target="_blank" className="hover:text-indigo-600">Twitter</a>
+            <div className="mt-2 flex justify-center gap-4">
+              <a href="#" className="hover:text-[var(--primary)]">Privacy</a>
+              <a href="#" className="hover:text-[var(--primary)]">Terms</a>
+              <a href="https://x.com/Trickle_HQ" target="_blank" rel="noreferrer" className="hover:text-[var(--primary)]">Twitter</a>
             </div>
           </div>
         </footer>

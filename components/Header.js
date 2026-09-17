@@ -1,33 +1,24 @@
 function Header() {
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-50" data-name="header" data-file="components/Header.js">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-sm" data-name="header" data-file="components/Header.js">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
-          <div className="w-8 h-8 bg-black flex items-center justify-center">
-            <div className="icon-qr-code text-white text-xl"></div>
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-sm">
+            <div className="icon-qr-code text-2xl"></div>
           </div>
-          <div className="border-l border-gray-200 pl-4">
-            <h1 className="text-sm font-black tracking-[0.2em] text-black leading-none uppercase">QR PRO</h1>
-            <span className="text-[9px] font-medium text-gray-400 uppercase tracking-widest mt-1 block">Digital Utility</span>
+          <div className="border-l border-slate-200 pl-4 leading-none">
+            <h1 className="text-sm font-black uppercase tracking-[0.2em] text-black">QR PRO</h1>
+            <span className="mt-1 block text-[9px] font-medium uppercase tracking-[0.2em] text-slate-500">Digital Utility</span>
           </div>
         </div>
-        
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">01 // Generator</a>
-          <a href="#" className="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">02 // Histori</a>
-          <a href="#" className="text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">03 // API</a>
+
+        <nav className="hidden items-center gap-8 md:flex">
+          <a href="#" className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 transition-colors hover:text-[var(--primary)]">01 // Generator</a>
+          <a href="#" className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 transition-colors hover:text-[var(--primary)]">02 // Histori</a>
+          <a href="#" className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500 transition-colors hover:text-[var(--primary)]">03 // API</a>
         </nav>
 
-        <div className="flex items-center gap-3">
-          <button className="hidden sm:flex btn btn-secondary text-sm px-4">
-            <div className="icon-book-open text-base"></div>
-            Panduan
-          </button>
-          <button className="btn btn-primary text-sm px-4">
-            <div className="icon-user-round text-base"></div>
-            Masuk
-          </button>
-        </div>
+        <div className="flex items-center gap-3" />
       </div>
     </header>
   );
