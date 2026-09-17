@@ -25,6 +25,8 @@ function ControlPanel({ config, onUpdate }) {
     reader.readAsDataURL(file);
   };
 
+  const frameOptions = ['None', 'Bottom Bar', 'Top Header', 'Outline', 'Bubble Top', 'Bubble Bottom'];
+
   return (
     <div className="card flex flex-col overflow-hidden" data-name="control-panel" data-file="components/ControlPanel.js">
       <div className="flex border-b border-[var(--line)] bg-white/70 backdrop-blur-sm">
@@ -149,10 +151,13 @@ function ControlPanel({ config, onUpdate }) {
             <div className="space-y-3">
               <p className="text-sm font-bold text-slate-700">Add Frame</p>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                {['None', 'Bottom Bar', 'Top Header', 'Outline', 'Bubble Top', 'Bubble Bottom'].map((frame) => (
+                {frameOptions.map((frame) => (
                   <button
                     key={frame}
-                    className="rounded-xl border border-[var(--line)] bg-white px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-slate-600 transition hover:border-[var(--primary)] hover:text-[var(--primary)]"
+                    onClick={() => onUpdate({ frame })}
+                    className={`rounded-xl border px-3 py-2 text-[10px] font-black uppercase tracking-[0.18em] transition ${config.frame === frame
+                      ? 'border-[var(--primary)] bg-[var(--primary)] text-white'
+                      : 'border-[var(--line)] bg-white text-slate-600 hover:border-[var(--primary)] hover:text-[var(--primary)]'}`}
                   >
                     {frame}
                   </button>
@@ -212,7 +217,7 @@ function ControlPanel({ config, onUpdate }) {
 
       <div className="flex items-center justify-end gap-3 border-t border-[var(--line)] bg-[var(--panel)] p-4">
         <button
-          onClick={() => onUpdate({ colorDark: '#1d5c3c', colorLight: '#ffffff', margin: 2, errorLevel: 'H', logoImage: '' })}
+          onClick={() => onUpdate({ colorDark: '#1d5c3c', colorLight: '#ffffff', margin: 2, errorLevel: 'H', logoImage: '', frame: 'None' })}
           className="btn btn-secondary"
         >
           <div className="icon-rotate-ccw text-base"></div>

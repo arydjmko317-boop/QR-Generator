@@ -81,6 +81,35 @@ function QRDisplay({ config }) {
     }
   };
 
+  const renderFrameOverlay = () => {
+    if (!config.frame || config.frame === 'None') return null;
+
+    const commonFrameClass = 'absolute left-1/2 -translate-x-1/2 rounded-full border border-slate-200 bg-white shadow-sm';
+
+    switch (config.frame) {
+      case 'Bottom Bar':
+        return (
+          <div className="absolute -bottom-3 left-1/2 w-[78%] -translate-x-1/2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-sm">
+            <div className="h-2 w-full rounded-full bg-[var(--primary)]/10" />
+          </div>
+        );
+      case 'Top Header':
+        return (
+          <div className="absolute -top-3 left-1/2 w-[72%] -translate-x-1/2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-sm">
+            <div className="h-2 w-full rounded-full bg-[var(--primary)]/15" />
+          </div>
+        );
+      case 'Outline':
+        return <div className="absolute inset-0 rounded-[26px] border-4 border-[var(--primary)]/20" />;
+      case 'Bubble Top':
+        return <div className={`${commonFrameClass} top-[-12px] h-8 w-8`} />;
+      case 'Bubble Bottom':
+        return <div className={`${commonFrameClass} bottom-[-12px] h-8 w-8`} />;
+      default:
+        return null;
+    }
+  };
+
   const downloadQR = (format) => {
     const canvas = canvasRef.current;
     const link = document.createElement('a');
@@ -102,6 +131,7 @@ function QRDisplay({ config }) {
       </div>
 
       <div className="relative mx-auto flex aspect-square w-full max-w-[360px] items-center justify-center rounded-[26px] bg-[var(--frame)] p-5 ring-1 ring-[var(--line)]">
+        {renderFrameOverlay()}
         <div className="flex items-center justify-center rounded-[20px] bg-white p-4 shadow-inner ring-1 ring-slate-200">
           <canvas
             ref={canvasRef}
