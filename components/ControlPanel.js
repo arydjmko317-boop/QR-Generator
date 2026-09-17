@@ -25,7 +25,7 @@ function ControlPanel({ config, onUpdate }) {
     reader.readAsDataURL(file);
   };
 
-  const frameOptions = ['None', 'Bottom Bar', 'Top Header', 'Outline', 'Bubble Top', 'Bubble Bottom'];
+  const frameOptions = ['None', 'Bottom Bar', 'Top Header', 'Outline', 'Bubble Top', 'Bubble Bottom', 'Text'];
 
   return (
     <div className="card flex flex-col overflow-hidden" data-name="control-panel" data-file="components/ControlPanel.js">
@@ -163,6 +163,64 @@ function ControlPanel({ config, onUpdate }) {
                   </button>
                 ))}
               </div>
+
+              {(config.frame !== 'None') && (
+                <div className="space-y-4 rounded-2xl border border-[var(--line)] bg-white p-4">
+                  <div>
+                    <label className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-slate-700">Frame Text</label>
+                    <input
+                      type="text"
+                      name="frameText"
+                      value={config.frameText}
+                      onChange={handleInputChange}
+                      className="input-field"
+                      placeholder="Masukkan teks frame"
+                    />
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-slate-700">Frame Color</label>
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="color"
+                          name="frameColor"
+                          value={config.frameColor}
+                          onChange={handleInputChange}
+                          className="h-12 w-12 cursor-pointer rounded-xl border-2 border-slate-200 bg-white"
+                        />
+                        <input
+                          type="text"
+                          name="frameColor"
+                          value={config.frameColor}
+                          onChange={handleInputChange}
+                          className="input-field text-center font-mono"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="mb-2 block text-xs font-bold uppercase tracking-[0.16em] text-slate-700">Text Color</label>
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="color"
+                          name="frameTextColor"
+                          value={config.frameTextColor}
+                          onChange={handleInputChange}
+                          className="h-12 w-12 cursor-pointer rounded-xl border-2 border-slate-200 bg-white"
+                        />
+                        <input
+                          type="text"
+                          name="frameTextColor"
+                          value={config.frameTextColor}
+                          onChange={handleInputChange}
+                          className="input-field text-center font-mono"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -217,7 +275,7 @@ function ControlPanel({ config, onUpdate }) {
 
       <div className="flex items-center justify-end gap-3 border-t border-[var(--line)] bg-[var(--panel)] p-4">
         <button
-          onClick={() => onUpdate({ colorDark: '#1d5c3c', colorLight: '#ffffff', margin: 2, errorLevel: 'H', logoImage: '', frame: 'None' })}
+          onClick={() => onUpdate({ colorDark: '#1d5c3c', colorLight: '#ffffff', margin: 2, errorLevel: 'H', logoImage: '', frame: 'None', frameText: 'Pondok Pesantren', frameColor: '#1d5c3c', frameTextColor: '#ffffff' })}
           className="btn btn-secondary"
         >
           <div className="icon-rotate-ccw text-base"></div>

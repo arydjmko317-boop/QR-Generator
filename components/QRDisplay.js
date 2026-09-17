@@ -84,27 +84,48 @@ function QRDisplay({ config }) {
   const renderFrameOverlay = () => {
     if (!config.frame || config.frame === 'None') return null;
 
-    const commonFrameClass = 'absolute left-1/2 -translate-x-1/2 rounded-full border border-slate-200 bg-white shadow-sm';
+    const barStyle = {
+      backgroundColor: config.frameColor || '#1d5c3c',
+      color: config.frameTextColor || '#ffffff'
+    };
 
     switch (config.frame) {
       case 'Bottom Bar':
         return (
-          <div className="absolute -bottom-3 left-1/2 w-[78%] -translate-x-1/2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-sm">
-            <div className="h-2 w-full rounded-full bg-[var(--primary)]/10" />
+          <div className="absolute -bottom-3 left-1/2 w-[78%] -translate-x-1/2 rounded-full border border-slate-200 px-3 py-2 shadow-sm" style={{ backgroundColor: config.frameColor || '#1d5c3c', color: config.frameTextColor || '#ffffff' }}>
+            <div className="text-center text-[9px] font-black uppercase tracking-[0.2em] truncate">
+              {config.frameText || 'QR Frame'}
+            </div>
           </div>
         );
       case 'Top Header':
         return (
-          <div className="absolute -top-3 left-1/2 w-[72%] -translate-x-1/2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-sm">
-            <div className="h-2 w-full rounded-full bg-[var(--primary)]/15" />
+          <div className="absolute -top-3 left-1/2 w-[72%] -translate-x-1/2 rounded-full border border-slate-200 px-3 py-2 shadow-sm" style={{ backgroundColor: config.frameColor || '#1d5c3c', color: config.frameTextColor || '#ffffff' }}>
+            <div className="text-center text-[9px] font-black uppercase tracking-[0.2em] truncate">
+              {config.frameText || 'QR Frame'}
+            </div>
           </div>
         );
       case 'Outline':
-        return <div className="absolute inset-0 rounded-[26px] border-4 border-[var(--primary)]/20" />;
+        return <div className="absolute inset-0 rounded-[26px] border-4" style={{ borderColor: config.frameColor || '#1d5c3c' }} />;
       case 'Bubble Top':
-        return <div className={`${commonFrameClass} top-[-12px] h-8 w-8`} />;
+        return (
+          <div className="absolute left-1/2 top-[-14px] -translate-x-1/2 rounded-full border border-slate-200 px-3 py-2 shadow-sm" style={{ backgroundColor: config.frameColor || '#1d5c3c', color: config.frameTextColor || '#ffffff' }}>
+            <span className="text-[9px] font-black uppercase tracking-[0.18em]">{(config.frameText || 'QR').slice(0, 12)}</span>
+          </div>
+        );
       case 'Bubble Bottom':
-        return <div className={`${commonFrameClass} bottom-[-12px] h-8 w-8`} />;
+        return (
+          <div className="absolute bottom-[-14px] left-1/2 -translate-x-1/2 rounded-full border border-slate-200 px-3 py-2 shadow-sm" style={{ backgroundColor: config.frameColor || '#1d5c3c', color: config.frameTextColor || '#ffffff' }}>
+            <span className="text-[9px] font-black uppercase tracking-[0.18em]">{(config.frameText || 'QR').slice(0, 12)}</span>
+          </div>
+        );
+      case 'Text':
+        return (
+          <div className="absolute bottom-[-18px] left-1/2 w-[84%] -translate-x-1/2 rounded-xl border border-slate-200 px-3 py-2 text-center shadow-sm" style={{ backgroundColor: config.frameColor || '#1d5c3c', color: config.frameTextColor || '#ffffff' }}>
+            <span className="text-[9px] font-black uppercase tracking-[0.22em]">{config.frameText || 'QR Frame'}</span>
+          </div>
+        );
       default:
         return null;
     }

@@ -47,7 +47,10 @@ function App() {
     errorLevel: 'H',
     type: 'URL',
     logoImage: '',
-    frame: 'None'
+    frame: 'None',
+    frameText: 'Pondok Pesantren',
+    frameColor: '#1d5c3c',
+    frameTextColor: '#ffffff'
   });
 
   const updateConfig = (newVal) => {
